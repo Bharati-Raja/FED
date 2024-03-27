@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharati Raja</title>
+    
+
+</head>
+
+<body>
+    <script>
+
+
+        function newElement(Element, Class, id, Value, parentid, ...attributes) {
+
+            var y = document.createElement(Element)
+            y.setAttribute("class", Class)
+            y.setAttribute("id", id)
+
+            if (attributes) {
+                y.type = attributes[0]
+                y.value = attributes[1]
+                if (attributes[1]) y.readOnly = attributes[2]
+            }
+
+            if (Value != '\0') {
+                var text = document.createTextNode(Value)
+                console.log(text)
+                y.appendChild(text)
+            }
+            if (parentid == '\0') {
+                document.body.appendChild(y)
+            }
+            else {
+                var parent = document.getElementById(parentid)
+                parent.appendChild(y)
+            }
+        }
+        //creating Elements
+        newElement("div", "center", "center", '\0', '\0')
+        newElement("div", "board", 'board', '\0', "center")
+
+        newElement("div", "row", 'row0', "\0", 'board')
+        newElement("div", "row", 'row5', "\0", 'board')
+        newElement("div", "row", 'row1', "\0", 'board')
+        newElement("div", "row", 'row2', "\0", 'board')
+        newElement("div", "row", 'row3', "\0", 'board')
+        newElement("div", "row", 'row4', "\0", 'board')
+        newElement("div", "row", 'cart', "\0", 'board')
+
+        newElement("input", "src", 'input', "\0", 'row0', "text", "Bharati Raja", "true")
+
+
+        newElement("button", "button", '7', "7", 'row1')
+        newElement("button", "button", '8', "8", 'row1')
+        newElement("button", "button", '9', "9", 'row1')
+        newElement("button", "operator button", '*', "*", 'row1')
+
+        newElement("button", "button", '4', "4", 'row2')
+        newElement("button", "button", '5', "5", 'row2')
+        newElement("button", "button", '6', "6", 'row2')
+        newElement("button", "operator button", '-', "-", 'row2')
+
+        newElement("button", "button", '1', "1", 'row3')
+        newElement("button", "button", '2', "2", 'row3')
+        newElement("button", "button", '3', "3", 'row3')
+        newElement("button", "operator button", '+', "+", 'row3')
+
+        newElement("button", "button1 button", '0', "0", 'row4')
+        newElement("button", "button", '.', ".", 'row4')
+        newElement("button", "operator button", '=', "=", 'row4')
+
+
+        newElement("button", "button ", 'ac', "ac", 'row5')
+        newElement("button", "button ", 'c', "C", 'row5')
+        newElement("button", "operator button", '%', "%", 'row5')
+        newElement("button", "operator button", '/', "/", 'row5')
+
+        //css
+        var but = document.querySelectorAll(".button")
+        var button = Array.from(but)
+        button.forEach(s => { s.style.borderRadius = "20px" })
+
+        // calculator logic
+
+        let str = ""
+        let opFound = false
+        let input = document.getElementById("input")
+        let buttons = document.querySelectorAll('.button');
+        Array.from(buttons).forEach(button => {
+            button.addEventListener('click', (e) => {
+
+                if (e.target.id === '=') {
+                    str = eval(str)
+                    if (isNaN(str))
+                        str = "Error"
+
+                }
+                else if (e.target.id === 'ac') {
+                    str = '0'
+                    opFound = false
+                }
+                else if (e.target.id === 'c') {
+                    str = str.substring(0, str.length - 1)
+                    if (str == '') str = '0'
+
+                }
+                else if ((e.target.id == '-' || e.target.id == '+' || e.target.id == '*' || e.target.id == '/' || e.target.id == '%') && !opFound) {
+                    opFound = true; str += e.target.id;
+                }
+                else if ((e.target.id == '-' || e.target.id == '+' || e.target.id == '*' || e.target.id == '/' || e.target.id == '%') && opFound) {
+                    str += ''
+                }
+                else {
+                    console.log(e.target)
+                    if (str == '0')
+                        str = e.target.id
+                    else {
+                        str += e.target.id
+                         input = document.getElementById("input")
+                        opFound = false
+                    }
+                }
+                
+                document.querySelector("input").value = str;
+            })
+        })
+        //css 
+        const cssStyles = {
+            html: {
+                height: '100%',
+                width: '100%',
+            },
+            body: {
+                height: '100%',
+                width: '100%',
+            },
+            '.center': {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%,-50%)',
+            },
+            '.src': {
+                backgroundColor: '#010c08',
+                color: 'white',
+                fontSize: 'xx-large',
+                borderRadius: '9px',
+                height: '50px',
+                width: '200px',
+                margin: '9px',
+                padding: '4px',
+                alignItems: 'center',
+            },
+            '#input': {
+                textIndent: '0px',
+            },
+            '.row': {
+                margin: '6px 0px',
+            },
+            '.button': {
+                fontSize: 'medium',
+                textAlign: 'center',
+                padding: '20px',
+                backgroundColor: '#3f5e52',
+                color: 'white',
+                height: '30px',
+                width: '30px',
+                margin: '0px 6px',
+                border: '2px solid black',
+                borderRadius: '9px',
+                cursor: 'pointer',
+            },
+            '.button1': {
+                height: '30px',
+                width: '100px',
+            },
+
+            '.operator': {
+                backgroundColor: 'orange',
+                height: '30px',
+                width: '30px',
+            },
+            '.board': {
+                backgroundColor: '#242b28',
+                borderRadius: '5px',
+                height: '350px',
+                width: '230px',
+            }
+        };
+
+
+        function applyStyles(styles) {
+            for (const selector in styles) {
+                const elements = document.querySelectorAll(selector);
+                if (elements.length === 0) {
+                    console.warn(`No elements found matching selector '${selector}'`);
+                    continue;
+                }
+                elements.forEach(element => {
+                    for (const property in styles[selector]) {
+                        element.style[property] = styles[selector][property];
+                    }
+                });
+            }
+        }
+
+        applyStyles(cssStyles);
+
+    </script>
+</body>
+
+</html>
