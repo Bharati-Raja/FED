@@ -1,0 +1,46 @@
+
+.inputholder{
+    width: 455px;
+    
+}
+input{
+    margin-top:6px ;
+    text-indent: 35%;
+    width: 100%;
+    border: none;
+    height: 30px;
+    border-radius: 16px;
+}
+.options{
+    display: flex;
+}
+nav{
+    width: 100vw;
+}
+.nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color:rgb(250, 242, 242)
+}
+select{
+    border: none;
+    background-color: transparent;
+}
+select option{
+    background-color:transparent ;
+    border: none;
+}
+.li{
+    margin-top: 6px;
+    margin-right: 12px;
+    list-style:'';
+}
+.li-holder{
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    color: grey;
+    font-weight: 600;
+}

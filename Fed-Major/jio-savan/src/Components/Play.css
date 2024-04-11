@@ -1,0 +1,48 @@
+.player{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    border: 0.5px solid rgb(236, 212, 212);
+    width: 100%;
+    bottom: 0px;
+    background-color: rgb(250, 242, 242);;
+
+}
+.music{
+    
+    padding: 5px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.music img{
+    height: 50px;
+    width: 50px;
+    
+    border-radius: 5px;
+    /* border: 1px solid black; */
+}
+.text{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.text b{
+    
+    font-size:medium;
+}
+.text p{
+    margin: 5px;
+    font-size: small;
+}
+input{
+width: 80%;
+background-color: #e8e8ff;
+}
+.controls img{
+   height: 30px;
+}

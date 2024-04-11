@@ -1,0 +1,60 @@
+
+h2{
+    padding: 0px;
+    left: 0px;
+    position:sticky;
+}
+.container{
+    display: flex;
+}
+.side-bar{
+    width: 20%;
+}
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: rgb(223, 227, 227); */
+}.card{
+    margin: 15px;
+    display: flex;
+    height: 220px;
+    flex-direction: column;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+}
+.imgholder img{
+    height: 160px;
+    border-radius: 5px;
+}
+.dataholder{
+    font-size:medium;
+}
+.dataholder:hover{
+    font-weight: 600;
+}
+.li{
+    margin-top: 6px;
+    margin-right: 12px;
+    list-style:'';
+    color:gray;
+    font-weight: 500;
+}
+.sli{
+    margin-left:47px ;
+}
+.sli .li{
+    color:black;
+    text-align: start;
+}
+.sli .li:hover{
+    font-weight: 700;
+}
+
+.li-holder{
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    color: grey;
+    font-weight: 600;
+}
